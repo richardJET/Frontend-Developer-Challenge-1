@@ -38,10 +38,10 @@ export default function Header({ toggleSideMenuHandler, toggleDarkModeHandler, t
           </a>
         </li>
         <li className="nav-item bar-menu px-1">
-          <button className="button-collapse d-block bg-transparent border-0 mt-1" onClick={() => toggleSideMenuHandler()}><FontAwesomeIcon icon={faBars} className='menu' /></button>
+          <button className={`button-collapse d-block bg-transparent border-0 mt-1 ${toggleDarkMode ? "text-info" : "text-secondary"}`} onClick={() => toggleSideMenuHandler()}><FontAwesomeIcon icon={faBars} className={'menu'} /></button>
         </li>
       </ul>
-      
+
       <ul className="navbar-nav flex-row">
         <li>
           <DarkToggle toggleDarkModeHandler={toggleDarkModeHandler} toggleDarkMode={toggleDarkMode} />
@@ -54,7 +54,7 @@ export default function Header({ toggleSideMenuHandler, toggleDarkModeHandler, t
             <span className="d-none d-lg-block">Explore</span>
           </a>
         </li>
-        <li className="nav-item d-flex dropdown position-relative" onMouseEnter={() => setShowDashboard(true)} onMouseLeave={() => {setShowDashboard(false)}}>
+        <li className="nav-item d-flex dropdown position-relative" onMouseEnter={() => setShowDashboard(true)} onMouseLeave={() => {setShowDashboard(false)}} onTouchStart={() => {if(showDashboard){ setShowDashboard(false)}}}>
           <button className="nav-link d-flex" id="new_org_dashboard"  data-bs-toggle="dropdown" data-url="https://preprlabs.org/organisation/home"> 
             <span className="d-flex me-2 align-items-center">
               {toggleDarkMode ? <FontAwesomeIcon icon={faNewspaper} /> :
@@ -62,7 +62,7 @@ export default function Header({ toggleSideMenuHandler, toggleDarkModeHandler, t
             </span>
             <span className="d-none d-lg-block">My dashboard </span>
           </button>
-          <ul className={`dropdown-menu dropdown-menu-end position-absolute end-0 top-100 ${showDashboard ? "d-flex" : null}`} onMouseEnter={() => setShowDashboard(true)} onMouseLeave={() => { setShowDashboard(false) }}>
+          <ul className={`dropdown-menu dropdown-menu-end position-absolute end-0 top-100 ${showDashboard ? "d-flex" : null}`} onMouseEnter={() => setShowDashboard(true)} onMouseLeave={() => { setShowDashboard(false) }} >
             <li className="dropdown-submenu">
               <a className="dropdown-item" href="https://preprlabs.org/user/home"> 
                 <span>
@@ -73,7 +73,7 @@ export default function Header({ toggleSideMenuHandler, toggleDarkModeHandler, t
             </li>
           </ul>       
         </li>
-        <li className="nav-item d-flex dropdown position-relative" onMouseEnter={() => setShowManage(true)} onMouseLeave={() => {setShowManage(false)}}>
+        <li className="nav-item d-flex dropdown position-relative" onMouseEnter={() => setShowManage(true)} onMouseLeave={() => {setShowManage(false)}} onTouchStart={() => {if(showDashboard){ setShowDashboard(false)}}}>
           <button className="nav-link d-flex" data-bs-toggle="dropdown"> 
             <span className="d-flex me-2 align-items-center">
               {toggleDarkMode ? <FontAwesomeIcon icon={faCog} /> :
